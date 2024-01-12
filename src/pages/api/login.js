@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
     database: 'projects'
 })
 
-export default (req, res) => {
+export default Login = (req, res) => {
     if (req.method === 'POST') {
         const {email, password} = req.body;
         connection.query(`SELECT * FROM users WHERE email = ?`, [email],

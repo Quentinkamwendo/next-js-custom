@@ -53,10 +53,9 @@ export default async function handler(req, res) {
                 const documents = req.files.documents ? req.files.documents.map((file) =>
                     `/uploads/${file.filename}`) : [];
 
-                const video = req.files.video ? req.files.video.map((file) =>
-                    `/uploads/${file.filename}`) : [];
+                const video = req.files.video ? `/uploads/${req.files.video[0].filename}` : "";
 
-                const newProject = await prisma.project.create({
+                const newProject = await prisma.projects.create({
                     data: {
                         name,
                         description,

@@ -1,4 +1,4 @@
-import {destroyCookie} from "nookies"
+import {destroyCookie} from "nookies";
 
 export default function Logout(req, res) {
     if (req.method !== 'POST') {

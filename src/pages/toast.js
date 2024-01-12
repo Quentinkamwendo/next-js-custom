@@ -13,31 +13,6 @@ const App = () => {
     );
 };
 
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
-
-const options = {
-    providers: [
-        Providers.Email({
-            server: process.env.EMAIL_SERVER,
-            from: process.env.EMAIL_FROM,
-        }),
-    ],
-    database: {
-        type: "mysql",
-        host: process.env.MYSQL_HOST,
-        port: process.env.MYSQL_PORT,
-        username: process.env.MYSQL_USERNAME,
-        password: process.env.MYSQL_PASSWORD,
-        database: process.env.MYSQL_DATABASE,
-        synchronize: true,
-    },
-};
-
-export default (req, res) => NextAuth(req, res, options);
-// Create a pages/register.js file for rendering the registration form:
-//     javascript
-// Copy code
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { register } from "../api/auth";

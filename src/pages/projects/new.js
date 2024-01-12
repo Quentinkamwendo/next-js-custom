@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import {QueryClient,QueryClientProvider,useQuery} from "@tanstack/react-query";
-
 import {useSession} from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import {useRouter} from "next/router";
@@ -61,7 +60,14 @@ const ProjectForm = () => {
     };
 
 
-    const { mutate } = useMutation(onSubmit);
+    const { mutate } = useMutation(onSubmit, {
+        onError: (error) => {
+            toast.error(error)
+        },
+        onSuccess: (data) => {
+            toast.success(data)
+        }
+    });
 
     const handleVideoChange = (event) => {
         setVideo(event.target.files[0]);
@@ -84,7 +90,7 @@ const ProjectForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(mutate)} className="bg-white p-6 rounded-lg shadow-md">
+            <form onSubmit={handleSubmit(mutate)} encType={"multipart/form-data"} className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-lg font-medium mb-6">Create a new project</h2>
                 <div className="mb-6">
                     <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
