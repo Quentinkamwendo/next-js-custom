@@ -6,6 +6,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { StateContext } from "@/context/ContextProvider";
 import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 // import toast from "react-hot-toast";
 import {
   CircularProgress,

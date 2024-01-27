@@ -1,4 +1,3 @@
-import Logout from "@/pages/logout";
 import {
   Box,
   Collapse,

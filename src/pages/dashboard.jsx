@@ -60,7 +60,7 @@ export default function Dashboard() {
   };
   console.log(data);
   if (isLoading) {
-    <CircularProgress isIndeterminate color="blue.400" />;
+    <CircularProgress mx={"auto"} isIndeterminate color="blue.400" />;
   }
   return (
     <div className="container">
@@ -72,7 +72,9 @@ export default function Dashboard() {
               <Heading>{project.project_name}</Heading>
             </CardHeader>
             <CardBody>
-              <Text>{project.start_date}</Text>
+              <Text>Start Date is{project.start_date}</Text>
+              <Text>End Date: {project.end_date}</Text>
+              <Text>Duration: {project.duration}</Text>
               <Image
                 h={48}
                 objectFit={"cover"}
